@@ -275,7 +275,7 @@ class network (
       content => template($network::hostname_file_template),
       notify  => $network::manage_config_file_notify,
     }
-    case $::lsbmajdistrelease {
+    case $facts['os']['distro']['release']['major'] {
       '7': {
         exec { 'sethostname':
           command => "/usr/bin/hostnamectl set-hostname ${manage_hostname}",
